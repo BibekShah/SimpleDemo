@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Foods of Nepal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>	
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>	
+	<script src="appController.js"></script>
+</head>
+<body>
+	<div ng-app = "myApp" ng-controller="dataController" class="wrapper">
+		<div class="container text-center ">
+			<h1> Foods You Should Not Miss At Nepal</h1>
+			<p> This section displays the typical Nepali food you should not miss while travelling Nepal.</p>
+			<p> Displaying food item for <strong>{{getTotalPlaces()}}</strong>  different places of Nepal</p>
+		</div>
+		<div>
+			<form role="form" class="user-insertion">
+				<div class="form-group">
+					<label>Location</label>
+					<input type="text" class="form-control"  placeholder="Enter Place Name" ng-model="location">
+				</div>
+				<div class="form-group">
+					<label>Foods:</label>
+					<input type="text" class="form-control" placeholder="Enter Food Item" ng-model="foods">
+				</div>
+				<button class="btn-primary" ng-click="newEntry()">ADD ITEM</button>
+			</form>
+			<br>
+			<div class="search-table">
+				<form role="form">
+					<div class="form-group">
+						<label>Search Food Item By Location:</label>
+						<input type="text" class="form-control" ng-model="search.name">
+					</div>				
+				</form>
+				<table class="table table-striped">
+					<tr ng-repeat="resource in employees | filter:search">
+						<td>{{ resource.name }}</td>
+						<td>{{ resource.food }}</td>
+					</tr>    
+				</table>
+			</div>
+		</div>		
+	</div>
+</body>
+</html>
